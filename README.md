@@ -1,2 +1,2 @@
-# EjemploPractico-APIRest
-Ejemplo práctico de una API Rest utilizando Node, Express y MongoDB
+# simpleMovieAPI
+Ejemplo práctico de una API Rest de películas utilizando Node, Express y MongoDB
