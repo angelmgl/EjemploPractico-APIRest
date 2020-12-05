@@ -15,13 +15,24 @@ module.exports = app => {
     });
 
     app.post('/movies', (req, res) => {
-        let newMovie = req.body;
-
-        db.movies.insert(newMovie, (err, movie) => {
-            res.json({
-                movie
+        if(!req.body.title || !req.body.director || !req.body.genre || !req.body.year) {
+            res.status(400).json({
+                "error": "Fields title, director, genre and year are required."
             });
-        });
+        } else {
+            let newMovie = {
+                title: req.body.title,
+                director: req.body.director,
+                genre: req.body.genre,
+                year: req.body.year
+            };
+    
+            db.movies.insert(newMovie, (err, movie) => {
+                res.status(201).json({
+                    movie
+                });
+            });
+        }
     });
 
     app.put('/movies/:id', (req, res) => {
